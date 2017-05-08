@@ -1,0 +1,19 @@
+{
+  "port": 3001,
+  "secret": "secret key! (TODO: change on deploy)",
+  "mongoose": {
+    "uri": "mongodb://localhost/zabbix",
+    "options": {
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    }
+  },
+  "mailgun": {
+    "apiKey": "API_KEY",
+    "domain": "DOMAIN",
+    "senderFrom" : "Zabbix Reporter"
+  }
+}

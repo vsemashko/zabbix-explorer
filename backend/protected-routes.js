@@ -1,16 +1,16 @@
-var express = require('express'),
-    jwt     = require('express-jwt'),
-    config  = require('./config'),
-    quoter  = require('./quoter');
+const express = require('express');
+const jwt = require('express-jwt');
+const config = require('./config');
+const quoter = require('./quoter');
 
-var app = module.exports = express.Router();
+const app = module.exports = express.Router();
 
-var jwtCheck = jwt({
-  secret: config.secret
+const jwtCheck = jwt({
+    secret: config.get('secret')
 });
 
 app.use('/api/protected', jwtCheck);
 
-app.get('/api/protected/random-quote', function(req, res) {
-  res.status(200).send(quoter.getRandomOne());
+app.get('/api/protected/random-quote', function (req, res) {
+    res.status(200).send(quoter.getRandomOne());
 });

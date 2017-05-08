@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "server": "cd backend && npm i && node server.js",
+    "server": "cd backend && npm i && set NODE_PATH=./; && node server.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
