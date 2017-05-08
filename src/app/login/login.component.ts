@@ -23,7 +23,6 @@ export class LoginComponent {
 				},
 				error => {
 					alert(error.text());
-					console.log(error.text());
 				}
 			);
 	}

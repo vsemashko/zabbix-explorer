@@ -1,3 +1,6 @@
 {
-  "secret": "secret key! (TODO: change on deploy)"
+  "secret": "secret key! (TODO: change on deploy)",
+  "mailgunAPIKey": "key-a73fcfef31c908ec6698b781e24f8d03",
+  "mailgunDomain": "sandbox303df068819b4eaaac186d1b28cd831c.mailgun.org",
+  "mailgunSenderFrom": "Zabbix Reporter <postmaster@sandbox303df068819b4eaaac186d1b28cd831c.mailgun.org>"
 }
