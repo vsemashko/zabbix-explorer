@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('express-jwt');
-const config = require('./config');
-const quoter = require('./quoter');
+const config = require('../config/index');
+const quoter = require('../quoter');
 
 const app = module.exports = express.Router();
 

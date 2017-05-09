@@ -11,6 +11,7 @@ import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule, MdCoreModule, MdGridListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 	return new AuthHttp(new AuthConfig(), http, options);
@@ -18,7 +19,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 
 @NgModule({
 	declarations: [
-		AppComponent, HomeComponent, LoginComponent, SignupComponent
+		AppComponent,
+		HomeComponent,
+		LoginComponent,
+		SignupComponent,
+		PageNotFoundComponent
 	],
 	imports: [
 		BrowserModule,
