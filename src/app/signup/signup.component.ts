@@ -9,6 +9,8 @@ import { contentHeaders } from '../common/headers';
 	styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
+	private error: string;
+
 	constructor(public router: Router, public http: Http) {
 	}
 
@@ -21,10 +23,7 @@ export class SignupComponent {
 					localStorage.setItem('token', response.json().id_token);
 					this.router.navigate(['home']);
 				},
-				error => {
-					alert(error.text());
-					console.log(error.text());
-				}
+				error => this.error = error.json().error
 			);
 	}
 

@@ -1,6 +1,6 @@
-const User = require('models/user').User;
+const User = require('models/user.model').User;
 const HttpError = require('error').HttpError;
-const AuthError = require('models/user').AuthError;
+const AuthError = require('models/user.model').AuthError;
 
 exports.post = function (req, res, next) {
     let username = req.body.username;

@@ -5,7 +5,8 @@ async.series([
     open,
     dropDatabase,
     requireModels,
-    createUsers
+    createUsers,
+    createMailingList
 ], function(err) {
     console.log(arguments);
     mongoose.disconnect();
@@ -22,7 +23,7 @@ function dropDatabase(callback) {
 }
 
 function requireModels(callback) {
-    require('models/user');
+    require('models');
 
     async.each(Object.keys(mongoose.models), function(modelName, callback) {
         mongoose.models[modelName].ensureIndexes(callback);
@@ -33,11 +34,24 @@ function createUsers(callback) {
 
     let users = [
         {username: 'qwe', password: 'qwe'},
-        {username: 'admin', password: 'thetruehero'}
+        {username: 'user', password: 'user'},
+        {username: 'admin', password: 'admin'}
     ];
 
     async.each(users, function(userData, callback) {
         var user = new mongoose.models.User(userData);
         user.save(callback);
+    }, callback);
+}
+
+function createMailingList(callback) {
+    let mailingLists = [
+        {email: 'qwe@qwe'},
+        {email: 'eee@eeee'}
+    ];
+
+    async.each(mailingLists, function(mailingList, callback) {
+        var mailingList = new mongoose.models.MailingList(mailingList);
+        mailingList.save(callback);
     }, callback);
 }

@@ -9,7 +9,14 @@ import { SignupComponent } from './signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCoreModule, MdGridListModule } from '@angular/material';
+import {
+	MdButtonModule,
+	MdCheckboxModule,
+	MdCoreModule,
+	MdGridListModule,
+	MdInputModule,
+	MdListModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
@@ -31,7 +38,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 		FormsModule,
 		HttpModule,
 		AppRoutingModule,
+		MdListModule,
 		MdButtonModule,
+		MdInputModule,
 		MdCheckboxModule,
 		MdGridListModule,
 		MdCoreModule

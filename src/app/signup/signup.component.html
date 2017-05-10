@@ -1,14 +1,16 @@
-<div class="signup center-block jumbotron">
-    <h1>Signup</h1>
+<div class="signup center-block">
+    <h1 class="signup__header">Signup</h1>
     <form role="form" (submit)="signup($event, username.value, password.value)">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" #username class="form-control" id="username" placeholder="Username">
+        <div class="row">
+            <md-input-container class="col-xs-6">
+                <input mdInput #username placeholder="Username">
+            </md-input-container>
+            <md-input-container class="col-xs-6">
+                <input type="password" mdInput #password placeholder="Password">
+            </md-input-container>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" #password class="form-control" id="password" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" md-raised-button color="primary">Submit</button>
+        <a md-raised-button [routerLink]="['/login']">To login</a>
+        <p class="alert alert-danger signup-error" *ngIf="error">{{error.message}}</p>
     </form>
 </div>

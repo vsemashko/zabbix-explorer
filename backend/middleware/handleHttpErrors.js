@@ -5,10 +5,10 @@ module.exports = (err, req, res, next) => {
         err = new HttpError(err);
     }
 
-    if (err instanceof HttpError || err.name === 'HttpError') {
+    if (err instanceof HttpError || err.name === 'HttpError' || err.name === 'UnauthorizedError') {
         res.status(err.status);
-        res.json(err);
-        next();
+        return res.json(err);
+        //next();
     } else {
         next(err);
     }

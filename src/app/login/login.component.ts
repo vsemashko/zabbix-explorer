@@ -9,6 +9,8 @@ import { contentHeaders } from '../common/headers';
 	styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+	private error: string;
+
 	constructor(public router: Router, public http: Http) {
 	}
 
@@ -21,9 +23,7 @@ export class LoginComponent {
 					localStorage.setItem('token', response.json().id_token);
 					this.router.navigate(['home']);
 				},
-				error => {
-					alert(error.text());
-				}
+				error => this.error = error.json().error
 			);
 	}
 
