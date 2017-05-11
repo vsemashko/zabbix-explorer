@@ -18,9 +18,11 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
+      "scripts": [],
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
         "styles.scss"
       ],
       "stylePreprocessorOptions": {
@@ -28,8 +30,6 @@
           "styles"
         ]
       },
-      "scripts": [
-      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

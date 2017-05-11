@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../core/auth/authentication.service';
 import { MailingListsService } from './mailing-lists.service';
+import { LoggerService } from '../../core/logger/logger.service';
 
 @Component({
 	selector: 'app-home',
@@ -11,7 +12,8 @@ export class HomeComponent {
 	mailingLists: string[];
 
 	constructor(private authService: AuthenticationService,
-	            private mailingListsService: MailingListsService) {
+	            private mailingListsService: MailingListsService,
+	            private logger: LoggerService) {
 	}
 
 	logout() {
@@ -22,7 +24,7 @@ export class HomeComponent {
 		this.mailingListsService.getMailingLists()
 			.subscribe(
 				mailingLists => this.mailingLists = mailingLists,
-				error => console.error(error)
+				error => this.logger.error(error)
 			);
 	}
 }
