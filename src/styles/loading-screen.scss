@@ -1,0 +1,18 @@
+.loading-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000
+}
+
+.loading-mask-content {
+  position: relative;
+  z-index: 10000;
+  margin: 0 auto;
+  width: 100px;
+  height: 50px;
+  font-size: 10vh;
+  text-align: center;
+  top: 40%;
+  background: url(/assets/circleloadinganimation.gif) no-repeat center center;
+}

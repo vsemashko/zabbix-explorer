@@ -5,14 +5,16 @@ import { SignupModule } from './signup/signup.module';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { NavbarModule } from './view/navbar/navbar.module';
+import { MailingListModule } from './mailing-list/mailing-list.module';
 
 @NgModule({
 	imports: [
+		RouterModule,
 		LoginModule,
 		SignupModule,
 		HomeModule,
 		PageNotFoundModule,
-		RouterModule
+		MailingListModule
 	],
 	exports: [
 		NavbarModule

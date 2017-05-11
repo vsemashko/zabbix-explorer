@@ -1,0 +1,21 @@
+<md-input-container >
+  <input mdInput type="email" class="new-email" placeholder="Add new email" autofocus [(ngModel)]="newEmailText" (keyup.enter)="addTodo()">
+</md-input-container>
+<md-list *ngIf="mailingList">
+  <!--<md-list-item *ngFor="let email of mailingList">{{email}}</md-list-item>-->
+
+  <md-list-item *ngFor="let email of mailingList">
+    <!--<div class="view">
+      <label (dblclick)="editTodo(todo)">{{todo.title}}</label>
+      <button class="destroy" (click)="remove(todo)"></button>
+    </div>
+    <input mdInput class="edit" *ngIf="todo.editing"
+           [value]="todo.title" #editedtodo
+           (blur)="stopEditing(todo, editedtodo.value)"
+           (keyup.enter)="updateEditingTodo(todo, editedtodo.value)"
+           (keyup.escape)="cancelEditingTodo(todo)">-->
+    <md-icon md-list-avatar>email</md-icon>
+    <h4 md-line>{{email}}</h4>
+    <i class="material-icons">delete</i>
+  </md-list-item>
+</md-list>

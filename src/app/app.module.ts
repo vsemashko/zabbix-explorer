@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
+import { LoadingMaskModule } from './shared/loading-mask/loading-mask.module';
 
 @NgModule({
 	declarations: [
@@ -16,7 +17,8 @@ import { PagesModule } from './pages/pages.module';
 		BrowserAnimationsModule,
 		CoreModule,
 		PagesModule,
-		AppRoutingModule
+		AppRoutingModule,
+		LoadingMaskModule
 	],
 	bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 <md-toolbar class="nav-toolbar mat-elevation-z6" *appIfAuthenticated>
     <a md-button class="nav-link" routerLinkActive="nav-link__active" [routerLink]="['/home']">
-        <i class="material-icons">web</i>
-        Zabbix Reporter</a>
+        <i class="material-icons">web</i>Zabbix Reporter
+    </a>
+    <a md-button class="nav-link" routerLinkActive="nav-link__active" [routerLink]="['/mailing-lists']">Mailing list</a>
     <button md-button (click)="logout()">Logout</button>
 </md-toolbar>
