@@ -3,27 +3,35 @@ import {
 	MdButtonModule,
 	MdCheckboxModule,
 	MdCoreModule,
-	MdGridListModule,
+	MdGridListModule, MdIconModule,
 	MdInputModule,
-	MdListModule
+	MdListModule,
+	MdMenuModule,
+	MdToolbarModule
 } from '@angular/material';
 
 @NgModule({
 	imports: [
 		MdListModule,
+		MdToolbarModule,
+		MdMenuModule,
 		MdButtonModule,
 		MdInputModule,
 		MdCheckboxModule,
 		MdGridListModule,
-		MdCoreModule
+		MdCoreModule,
+		MdIconModule
 	],
 	exports: [
 		MdListModule,
+		MdToolbarModule,
+		MdMenuModule,
 		MdButtonModule,
 		MdInputModule,
 		MdCheckboxModule,
 		MdGridListModule,
-		MdCoreModule
+		MdCoreModule,
+		MdIconModule
 	],
 })
 export class MaterialModule {

@@ -4,6 +4,7 @@ import { HomeModule } from './home/home.module';
 import { SignupModule } from './signup/signup.module';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { NavbarModule } from './view/navbar/navbar.module';
 
 @NgModule({
 	imports: [
@@ -13,7 +14,9 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 		PageNotFoundModule,
 		RouterModule
 	],
-	exports: []
+	exports: [
+		NavbarModule
+	]
 })
 
 export class PagesModule {

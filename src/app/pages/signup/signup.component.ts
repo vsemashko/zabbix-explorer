@@ -5,7 +5,6 @@ import { contentHeaders } from '../../core/headers';
 import { AuthenticationService } from '../../core/auth/authentication.service';
 
 @Component({
-	selector: 'app-signup',
 	templateUrl: './signup.component.html',
 	styleUrls: ['./signup.component.scss']
 })

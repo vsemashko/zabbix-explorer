@@ -1,11 +1,8 @@
 <div>
-    <div class="home jumbotron centered">
+    <div class="home centered">
         <h1>Welcome to zabbix reporter!</h1>
         <p>
             <button md-raised-button (click)="getMailingLists()">Get Mailing Lists</button>
-        </p>
-        <p>
-            <button md-raised-button (click)="logout()">Logout</button>
         </p>
 
         <md-list *ngIf="mailingLists">

@@ -1,0 +1,16 @@
+.nav-toolbar {
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:active{
+  color: black;
+}
+
+.nav-link__active {
+  background-color: lightgray;
+}

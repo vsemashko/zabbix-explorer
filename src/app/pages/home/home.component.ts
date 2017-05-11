@@ -4,20 +4,14 @@ import { MailingListsService } from './mailing-lists.service';
 import { LoggerService } from '../../core/logger/logger.service';
 
 @Component({
-	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 	mailingLists: string[];
 
-	constructor(private authService: AuthenticationService,
-	            private mailingListsService: MailingListsService,
+	constructor(private mailingListsService: MailingListsService,
 	            private logger: LoggerService) {
-	}
-
-	logout() {
-		this.authService.logout();
 	}
 
 	getMailingLists() {
