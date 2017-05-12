@@ -39,7 +39,7 @@ function createUsers(callback) {
     ];
 
     async.each(users, function(userData, callback) {
-        var user = new mongoose.models.User(userData);
+        let user = new mongoose.models.User(userData);
         user.save(callback);
     }, callback);
 }
@@ -51,7 +51,7 @@ function createMailingList(callback) {
     ];
 
     async.each(mailingLists, function(mailingList, callback) {
-        var mailingList = new mongoose.models.MailingList(mailingList);
+        let mailingList = new mongoose.models.MailingList(mailingList);
         mailingList.save(callback);
     }, callback);
 }

@@ -4,7 +4,7 @@
            pattern="[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$"
            (keyup.enter)="addEmail(email, emailSubmit)"
            [(ngModel)]="newEmailText" >
-    <button *ngIf="newEmailText" #emailSubmit md-icon-button class="input_container__submit" (click)="addEmail(email)"><md-icon>done</md-icon></button>
+    <button #emailSubmit md-icon-button class="input_container__submit" (click)="addEmail(email)"><md-icon>done</md-icon></button>
     <md-error>Incorrect email address</md-error>
   </md-input-container>
   <md-list-item *ngFor="let email of mailingList">
