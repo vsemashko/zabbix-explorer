@@ -13,6 +13,13 @@ export class LoggerService {
 		}
 	}
 
+	success(message: string | any, showToast: boolean = true) {
+		console.log(message);
+		if (showToast) {
+			this.toastr.success(message, 'Sucess');
+		}
+	}
+
 	warn(message: string | any, showToast: boolean = true) {
 		console.log(message);
 		if (showToast) {

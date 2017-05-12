@@ -1,0 +1,23 @@
+.mailing-list {
+  max-width: 400px;
+}
+
+.mailing-list__input-container {
+  width: 100%;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+.mailing-list__edit-container {
+  width: 100%;
+}
+
+.input_container {
+  position: relative;
+}
+
+.input_container__submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

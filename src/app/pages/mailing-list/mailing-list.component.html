@@ -1,21 +1,24 @@
-<md-input-container >
-  <input mdInput type="email" class="new-email" placeholder="Add new email" autofocus [(ngModel)]="newEmailText" (keyup.enter)="addTodo()">
-</md-input-container>
-<md-list *ngIf="mailingList">
-  <!--<md-list-item *ngFor="let email of mailingList">{{email}}</md-list-item>-->
-
+<md-list class="mailing-list" *ngIf="mailingList">
+  <md-input-container class="mailing-list__input-container input_container">
+    <input mdInput type="email" #email placeholder="Add new email" autofocus
+           pattern="[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$"
+           (keyup.enter)="addEmail(email, emailSubmit)"
+           [(ngModel)]="newEmailText" >
+    <button *ngIf="newEmailText" #emailSubmit md-icon-button class="input_container__submit" (click)="addEmail(email)"><md-icon>done</md-icon></button>
+    <md-error>Incorrect email address</md-error>
+  </md-input-container>
   <md-list-item *ngFor="let email of mailingList">
-    <!--<div class="view">
-      <label (dblclick)="editTodo(todo)">{{todo.title}}</label>
-      <button class="destroy" (click)="remove(todo)"></button>
-    </div>
-    <input mdInput class="edit" *ngIf="todo.editing"
-           [value]="todo.title" #editedtodo
-           (blur)="stopEditing(todo, editedtodo.value)"
-           (keyup.enter)="updateEditingTodo(todo, editedtodo.value)"
-           (keyup.escape)="cancelEditingTodo(todo)">-->
-    <md-icon md-list-avatar>email</md-icon>
-    <h4 md-line>{{email}}</h4>
-    <i class="material-icons">delete</i>
+    <md-input-container class="mailing-list__edit-container" *ngIf="email.editing">
+      <input mdInput
+             pattern="[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$"
+             [(ngModel)]="email.editedValue" #editedEmail
+             (blur)="updateEditingEmail(email, email.editedValue, !editedEmail.validationMessage)"
+             (keyup.enter)="updateEditingEmail(email, email.editedValue, !editedEmail.validationMessage)"
+             (keyup.escape)="cancelEditingEmail(email)">
+    </md-input-container>
+    <h4 md-line *ngIf="!email.editing" (click)="editEmail(email)">{{email.value}}</h4>
+    <button md-icon-button *ngIf="!email.editing" (click)="editEmail(email)"><md-icon>edit</md-icon></button>
+    <button md-icon-button *ngIf="email.editing" (click)="completeEditingEmail(email)"><md-icon>done</md-icon></button>
+    <button md-icon-button (click)="removeEmail(email)"><md-icon>delete</md-icon></button>
   </md-list-item>
 </md-list>
