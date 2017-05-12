@@ -40,7 +40,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  @media(max-width: $mobile-screen), (max-height: 600px) {
+  @media(max-width: $mobile-screen), (max-height: 750px) {
     transform: translate(-50%, 0%);
     top: 230px;
   }

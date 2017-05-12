@@ -41,11 +41,13 @@ export class MailingListComponent implements OnInit {
 
 	updateEditingEmail(email: Email, newEmailValue: string, isValid: boolean) {
 		if (isValid && email.value === newEmailValue || !this.hasEmail(newEmailValue)) {
-			email.value = newEmailValue;
+			if (email.value !== newEmailValue) {
+				email.value = newEmailValue;
+				this.mailingListService.updateEmail(email)
+					.subscribe(updateEmail => this.logger.success('Email successfully updated!'),
+						error => this.logger.error(error));
+			}
 			email.editing = false;
-			this.mailingListService.updateEmail(email)
-				.subscribe(updateEmail => this.logger.success('Email successfully updated!'),
-					error => this.logger.error(error));
 		}
 	}
 

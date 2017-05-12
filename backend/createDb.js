@@ -1,12 +1,14 @@
 const mongoose = require('lib/mongoose');
 const async = require('async');
+const generateReportData = require('./generate_report_data');
 
 async.series([
     open,
     dropDatabase,
     requireModels,
     createUsers,
-    createMailingList
+    createMailingList,
+    createAvailabilityReportData
 ], function(err) {
     console.log(arguments);
     mongoose.disconnect();
@@ -31,7 +33,6 @@ function requireModels(callback) {
 }
 
 function createUsers(callback) {
-
     let users = [
         {username: 'qwe', password: 'qwe'},
         {username: 'user', password: 'user'},
@@ -51,7 +52,15 @@ function createMailingList(callback) {
     ];
 
     async.each(mailingLists, function(mailingList, callback) {
-        let mailingList = new mongoose.models.MailingList(mailingList);
-        mailingList.save(callback);
+        let list = new mongoose.models.MailingList(mailingList);
+        list.save(callback);
+    }, callback);
+}
+
+function createAvailabilityReportData(callback) {
+    let reports = generateReportData(600);
+    async.each(reports, function(report, callback) {
+        let availabilityReport = new mongoose.models.AvailabilityReport(report);
+        availabilityReport.save(callback);
     }, callback);
 }

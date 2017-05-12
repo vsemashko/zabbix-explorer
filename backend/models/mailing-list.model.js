@@ -66,4 +66,15 @@ schema.statics.deleteEmail = function (id, callback) {
     ], callback);
 };
 
+schema.statics.getAll = function () {
+    let MailingList = this;
+
+    return new Promise((resolve, reject) => {
+        MailingList.find({}, (err, records) => {
+            if (err) reject(err);
+            resolve(records);
+        });
+    });
+};
+
 exports.MailingList = mongoose.model('MailingList', schema);
