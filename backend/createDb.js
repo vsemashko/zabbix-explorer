@@ -8,6 +8,7 @@ async.series([
     requireModels,
     createUsers,
     createMailingList,
+    createReportSchedule,
     createAvailabilityReportData
 ], function(err) {
     console.log(arguments);
@@ -47,12 +48,23 @@ function createUsers(callback) {
 
 function createMailingList(callback) {
     let mailingLists = [
-        {email: 'qwe@qwe'},
-        {email: 'eee@eeee'}
+        {email: 'vladimirsemashko@mail.ru'}
     ];
 
     async.each(mailingLists, function(mailingList, callback) {
         let list = new mongoose.models.MailingList(mailingList);
+        list.save(callback);
+    }, callback);
+}
+
+function createReportSchedule(callback) {
+    const DAY = 1000 * 60 * 60 * 24;
+    let reportsSchedule = [
+        {report: 'Availability Report', interval: DAY}
+    ];
+
+    async.each(reportsSchedule, function(report, callback) {
+        let list = new mongoose.models.ReportSchedule(report);
         list.save(callback);
     }, callback);
 }

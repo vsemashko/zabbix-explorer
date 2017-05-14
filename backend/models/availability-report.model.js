@@ -1,14 +1,9 @@
 const async = require('async');
-const util = require('util');
-const config = require('config');
 const _ = require('lodash');
-const HttpError = require('error').HttpError;
-
-const mongoose = require('lib/mongoose'),
-    Schema = mongoose.Schema;
+const mongoose = require('lib/mongoose');
+const Schema = mongoose.Schema;
 require('mongoose-double')(mongoose);
 const SchemaTypes = mongoose.Schema.Types;
-
 
 const schema = new Schema({
     host: {
