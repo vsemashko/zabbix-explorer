@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { IfAuthenticatedDirective } from '../core/auth/if-authenticated.directive';
 import { FormsModule } from '@angular/forms';
+import { DatepickerModule } from 'angular2-material-datepicker';
+import { DataTableModule } from 'angular2-datatable';
 
 @NgModule({
 	imports: [
@@ -15,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 		CommonModule,
 		FormsModule,
 		MaterialModule,
+		DatepickerModule,
+		DataTableModule,
 		IfAuthenticatedDirective
 	]
 })

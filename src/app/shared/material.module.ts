@@ -3,10 +3,14 @@ import {
 	MdButtonModule,
 	MdCheckboxModule,
 	MdCoreModule,
-	MdGridListModule, MdIconModule,
+	MdDatepickerModule,
+	MdGridListModule,
+	MdIconModule,
 	MdInputModule,
 	MdListModule,
 	MdMenuModule,
+	MdNativeDateModule,
+	MdSelectModule,
 	MdToolbarModule
 } from '@angular/material';
 
@@ -20,7 +24,10 @@ import {
 		MdCheckboxModule,
 		MdGridListModule,
 		MdCoreModule,
-		MdIconModule
+		MdIconModule,
+		MdSelectModule,
+		MdDatepickerModule,
+		MdNativeDateModule
 	],
 	exports: [
 		MdListModule,
@@ -31,7 +38,10 @@ import {
 		MdCheckboxModule,
 		MdGridListModule,
 		MdCoreModule,
-		MdIconModule
+		MdIconModule,
+		MdSelectModule,
+		MdDatepickerModule,
+		MdNativeDateModule
 	],
 })
 export class MaterialModule {

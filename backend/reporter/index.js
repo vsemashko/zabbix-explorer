@@ -9,7 +9,6 @@ const _ = require('lodash');
 
 function sendReport() {
     return AvailabilityReport.getAll()
-        .then(records => mapToFloatedRates(records))
         .then(records => renderEmailTemplate(records))
         .then(emailContent => {
             return MailingList.getAll().then(mailingLists => {
@@ -18,16 +17,6 @@ function sendReport() {
                 });
             });
         });
-}
-
-function mapToFloatedRates(records) {
-    return records.map(record => {
-        return {
-            host: record.host,
-            success: parseFloat(Math.round(record.success * 1000) / 1000).toFixed(3),
-            failure: parseFloat(Math.round(record.failure * 1000) / 1000).toFixed(3),
-        }
-    });
 }
 
 function renderEmailTemplate(records) {

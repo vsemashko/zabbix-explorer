@@ -1,0 +1,44 @@
+@import "media-screen";
+
+.availability-report__body {
+  margin-top: 20px;
+}
+
+.filter-panel {
+  margin: 20px;
+  text-align: center;
+}
+
+.header-pagination {
+  .pagination {
+    display: block;
+    margin: 0;
+    min-width: 250px;
+  }
+}
+
+.report-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.report-header__col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.sort-row {
+  display: flex;
+
+  .sort-row__col {
+    @media(min-width: $mobile-screen) {
+      min-width: 200px;
+    }
+  }
+}
+
+.sort-row  {
+  display: block;
+}

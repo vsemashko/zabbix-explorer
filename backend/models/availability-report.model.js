@@ -6,6 +6,9 @@ const HttpError = require('error').HttpError;
 
 const mongoose = require('lib/mongoose'),
     Schema = mongoose.Schema;
+require('mongoose-double')(mongoose);
+const SchemaTypes = mongoose.Schema.Types;
+
 
 const schema = new Schema({
     host: {
@@ -14,11 +17,11 @@ const schema = new Schema({
         required: true
     },
     success: {
-        type: Number,
+        type: SchemaTypes.Double,
         required: true
     },
     failure: {
-        type: Number,
+        type: SchemaTypes.Double,
         required: true
     },
     created: {

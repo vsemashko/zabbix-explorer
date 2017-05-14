@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ZabbixReportService } from './zabbix-report.service';
+import { AvailabilityReportService } from './availability-report.service';
 
-describe('ZabbixReportService', () => {
+describe('AvailabilityReportService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ZabbixReportService]
+      providers: [AvailabilityReportService]
     });
   });
 
-  it('should ...', inject([ZabbixReportService], (service: ZabbixReportService) => {
+  it('should ...', inject([AvailabilityReportService], (service: AvailabilityReportService) => {
     expect(service).toBeTruthy();
   }));
 });

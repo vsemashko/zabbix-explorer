@@ -12,9 +12,13 @@ function generateReportData(reportsCount = 600) {
             success = 100;
             failure = 0;
         }
-        let host = faker.random.arrayElement(['ATM', 'CASH']) + faker.random.number({min: 100, max: 999});
+
+        success = parseFloat(Math.round(success * 1000) / 1000).toFixed(3);
+        failure = parseFloat(Math.round(failure * 1000) / 1000).toFixed(3);
+
+        let host = geterateRandomHostName();
         while (hostNames.has(host)) {
-            host = faker.random.arrayElement(['ATM', 'CASH']) + faker.random.number({min: 100, max: 999});
+            host = geterateRandomHostName();
         }
         hostNames.add(host);
         reports.push({
@@ -25,6 +29,10 @@ function generateReportData(reportsCount = 600) {
     }
 
     return reports;
+}
+
+function geterateRandomHostName() {
+    return faker.random.arrayElement(['ATM', 'CASH']) + faker.random.number({min: 100, max: 999});
 }
 
 module.exports = generateReportData;

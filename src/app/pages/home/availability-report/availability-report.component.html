@@ -1,0 +1,74 @@
+<div class="filter-panel">
+    <material-datepicker [(date)]="fromDate" placeholder="From Date"></material-datepicker>
+    <material-datepicker [(date)]="toDate" placeholder="To Date"></material-datepicker>
+    <button md-raised-button color="primary" (click)="generateReport()">Get Availability Report</button>
+    <button md-raised-button color="primary" (click)="sendReport()">Send Zabbix Report</button>
+</div>
+<div class="availability-report" *ngIf="records">
+    <div class="availability-report__header report-header">
+        <div class="header-pagination report-header__col">
+            <label class="label-control">Pagination</label>
+            <mfBootstrapPaginator [mfTable]="mf"></mfBootstrapPaginator>
+        </div>
+        <div class="report-header__col">
+            <label class="label-control block-select">Rows on page</label>
+            <div class="sort-row">
+                <md-select class="sort-row__col" [(ngModel)]="rowsOnPage" name="rowsCount">
+                    <md-option *ngFor="let option of rowsOnPageOptions" [value]="option">{{option}}</md-option>
+                </md-select>
+            </div>
+        </div>
+        <div class="report-header__col">
+            <label class="col-xs-12 label-control">Sort by</label>
+            <div class="sort-row">
+                <md-select class="sort-row__col" [(ngModel)]="sortBy" name="sortBy">
+                    <md-option value="host">Host</md-option>
+                    <md-option value="success">Success</md-option>
+                    <md-option value="failure">Failure</md-option>
+                </md-select>
+                <md-select class="sort-row__col" [(ngModel)]="sortOrder" name="sortOrder">
+                    <md-option value="asc">Ascending</md-option>
+                    <md-option value="desc">Descending</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default availability-report__body">
+        <table class="table table-striped" [mfData]="records | appDataFilter:'host':filterQuery" #mf="mfDataTable"
+               [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+            <thead>
+            <tr>
+                <th style="width: 33%">
+                    <mfDefaultSorter by="host">Host</mfDefaultSorter>
+                </th>
+                <th style="width: 33%">
+                    <mfDefaultSorter by="success">Success</mfDefaultSorter>
+                </th>
+                <th style="width: 33%">
+                    <mfDefaultSorter by="failure">Failure</mfDefaultSorter>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <md-input-container>
+                        <input mdInput #username [(ngModel)]="filterQuery" placeholder="Filter by host">
+                    </md-input-container>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of mf.data">
+                <td>{{item.host}}</td>
+                <td style="color: green">{{item.success}}</td>
+                <td style="color: red">{{item.failure}}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>

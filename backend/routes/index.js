@@ -12,6 +12,7 @@ app.post('/api/mailing-lists', require('./mailing-lists.routes').post);
 app.put('/api/mailing-lists/:id', require('./mailing-lists.routes').put);
 app.delete('/api/mailing-lists/:id', require('./mailing-lists.routes').delete);
 
-app.post('/api/sendReport', require('./report').post);
+app.get('/api/availability-report', require('./availability-report').get);
+app.post('/api/send-availability-report', require('./availability-report').post);
 
 app.use(require('middleware/handleUnauthorizedErrors'));
