@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let schedule of mf.data">
-        <td class="reports-schedule-table__body">{{schedule.report}}</td>
+        <td class="reports-schedule-table__body report-name">{{schedule.report}}</td>
         <td class="reports-schedule-table__body">
             <md-input-container>
                 <input ref-editedInterval mdInput type="number" [value]="schedule.interval" placeholder="{{editedInterval.value | appTimeString}}"
