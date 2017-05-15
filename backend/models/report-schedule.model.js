@@ -2,7 +2,8 @@ const async = require('async');
 const util = require('util');
 const _ = require('lodash');
 const mongoose = require('lib/mongoose');
-const scheduler = require('lib/scheduler');
+const scheduleTask = require('lib/scheduler').scheduleTask;
+const cancelScheduler = require('lib/scheduler').cancelScheduler;
 const Schema = mongoose.Schema;
 const zabbixReporter = require('reporter');
 
@@ -76,10 +77,12 @@ schema.statics.updateLastSent = function (lastSent = Date.now()) {
 
 function configureAvailabilityReportScheduler(report, ReportSchedule) {
     if (report.active) {
-        scheduler(() => {
+        scheduleTask(() => {
             zabbixReporter();
             ReportSchedule.updateLastSent();
         }, report.interval);
+    } else {
+        cancelScheduler();
     }
 }
 

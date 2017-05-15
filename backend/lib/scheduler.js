@@ -11,4 +11,11 @@ function scheduleTask(task, interval, initialInterval = interval) {
     }, initialInterval);
 }
 
-module.exports = scheduleTask;
+function cancelScheduler() {
+    if (taskTimer) {
+        clearTimeout(taskTimer);
+    }
+}
+
+module.exports.scheduleTask = scheduleTask;
+module.exports.cancelScheduler = cancelScheduler;
