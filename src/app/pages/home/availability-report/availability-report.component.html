@@ -34,17 +34,17 @@
         </div>
     </div>
     <div class="panel panel-default availability-report__body">
-        <table class="table table-striped" [mfData]="records | appDataFilter:'host':filterQuery" #mf="mfDataTable"
+        <table class="table table-striped availability-report-table" [mfData]="records | appDataFilter:'host':filterQuery" #mf="mfDataTable"
                [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
             <thead>
             <tr>
-                <th style="width: 33%">
+                <th class="availability-report-table__head">
                     <mfDefaultSorter by="host">Host</mfDefaultSorter>
                 </th>
-                <th style="width: 33%">
+                <th class="availability-report-table__head">
                     <mfDefaultSorter by="success">Success</mfDefaultSorter>
                 </th>
-                <th style="width: 33%">
+                <th class="availability-report-table__head">
                     <mfDefaultSorter by="failure">Failure</mfDefaultSorter>
                 </th>
             </tr>
@@ -57,10 +57,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of mf.data">
-                <td>{{item.host}}</td>
-                <td style="color: green">{{item.success}}</td>
-                <td style="color: red">{{item.failure}}</td>
+            <tr *ngFor="let schedule of mf.data">
+                <td>{{schedule.host}}</td>
+                <td class="success-col" style="color: green">{{schedule.success}}</td>
+                <td class="failure-col">{{schedule.failure}}</td>
             </tr>
             </tbody>
             <tfoot>
@@ -72,3 +72,4 @@
             </tfoot>
         </table>
     </div>
+</div>

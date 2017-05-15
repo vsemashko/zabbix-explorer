@@ -16,6 +16,10 @@ const schema = new Schema({
         type: Number,
         required: true
     },
+    active: {
+        type: Boolean,
+        default: true
+    },
     lastSent: {
         type: Date,
         default: Date.now
@@ -37,15 +41,15 @@ schema.statics.getAll = function () {
     });
 };
 
-schema.statics.saveAvailabilityInterval = function (interval) {
+schema.statics.saveAvailabilityInterval = function (schedule) {
     let ReportSchedule = this;
 
     return new Promise((resolve, reject) => {
         ReportSchedule.findOne({report: 'Availability Report'}, (err, report) => {
             if (err) reject(err);
-            report.interval = interval;
+            _.assign(report, schedule);
             report.save(resolve);
-            scheduler(zabbixReporter, report.interval);
+            configureAvailabilityReportScheduler(report, ReportSchedule);
         });
     });
 };
@@ -54,8 +58,29 @@ schema.statics.runAvailabilityReportSchedule = function () {
     let ReportSchedule = this;
     ReportSchedule.findOne({report: 'Availability Report'}, (err, report) => {
         if (err) throw err;
-        scheduler(zabbixReporter, report.interval);
+        configureAvailabilityReportScheduler(report, ReportSchedule);
     });
 };
+
+schema.statics.updateLastSent = function (lastSent = Date.now()) {
+    let ReportSchedule = this;
+
+    return new Promise((resolve, reject) => {
+        ReportSchedule.findOne({report: 'Availability Report'}, (err, report) => {
+            if (err) reject(err);
+            report.lastSent = lastSent;
+            report.save(resolve);
+        });
+    });
+};
+
+function configureAvailabilityReportScheduler(report, ReportSchedule) {
+    if (report.active) {
+        scheduler(() => {
+            zabbixReporter();
+            ReportSchedule.updateLastSent();
+        }, report.interval);
+    }
+}
 
 exports.ReportSchedule = mongoose.model('ReportSchedule', schema);

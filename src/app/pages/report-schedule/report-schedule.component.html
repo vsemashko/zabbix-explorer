@@ -1,0 +1,31 @@
+<h1 class="reports-schedule-title">Configure Report Schedules</h1>
+<table class="table table-striped" [mfData]="reportSchedules" #mf="mfDataTable">
+    <thead>
+    <tr>
+        <th class="reports-schedule-table__head">Report</th>
+        <th class="reports-schedule-table__head">Interval (ms)</th>
+        <th class="reports-schedule-table__head">Active</th>
+        <th class="reports-schedule-table__head">Last Sent</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let schedule of mf.data">
+        <td class="reports-schedule-table__body">{{schedule.report}}</td>
+        <td class="reports-schedule-table__body">
+            <md-input-container>
+                <input ref-editedInterval mdInput type="number" [value]="schedule.interval" placeholder="{{editedInterval.value | appTimeString}}"
+                       (keyup.enter)="updateReportInterval(schedule, editedInterval.value)"
+                       (keyup.escape)="editedInterval.value = schedule.interval">
+            </md-input-container>
+            <button class="submit-interval" md-mini-fab (click)="updateReportInterval(schedule, editedInterval.value)">
+                <md-icon>check</md-icon>
+            </button>
+        <td class="reports-schedule-table__body">
+            <md-slide-toggle color="primary" [checked]="schedule.active" (change)="toggleReportActive(schedule)">
+                {{schedule.active ? 'Enabled' : 'Disabled'}}
+            </md-slide-toggle>
+        </td>
+        <td class="reports-schedule-table__body">{{schedule.lastSent | date:'medium'}}</td>
+    </tr>
+    </tbody>
+</table>

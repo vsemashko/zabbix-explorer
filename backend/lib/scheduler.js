@@ -1,6 +1,6 @@
 let taskTimer;
 
-function scheduleTask(task, interval) {
+function scheduleTask(task, interval, initialInterval = interval) {
     if (taskTimer) {
         clearTimeout(taskTimer);
     }
@@ -8,7 +8,7 @@ function scheduleTask(task, interval) {
     taskTimer = setTimeout(() => {
         task();
         scheduleTask(task, interval);
-    }, interval);
+    }, initialInterval);
 }
 
 module.exports = scheduleTask;

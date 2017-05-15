@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { NavbarModule } from './view/navbar/navbar.module';
 import { MailingListModule } from './mailing-list/mailing-list.module';
+import { ReportScheduleModule } from './report-schedule/report-schedule.module';
 
 @NgModule({
 	imports: [
@@ -14,7 +15,8 @@ import { MailingListModule } from './mailing-list/mailing-list.module';
 		SignupModule,
 		HomeModule,
 		PageNotFoundModule,
-		MailingListModule
+		MailingListModule,
+		ReportScheduleModule
 	],
 	exports: [
 		NavbarModule

@@ -11,7 +11,8 @@ import {
 	MdMenuModule,
 	MdNativeDateModule,
 	MdSelectModule,
-	MdToolbarModule
+	MdToolbarModule,
+	MdSlideToggleModule
 } from '@angular/material';
 
 @NgModule({
@@ -27,7 +28,8 @@ import {
 		MdIconModule,
 		MdSelectModule,
 		MdDatepickerModule,
-		MdNativeDateModule
+		MdNativeDateModule,
+		MdSlideToggleModule
 	],
 	exports: [
 		MdListModule,
@@ -41,7 +43,8 @@ import {
 		MdIconModule,
 		MdSelectModule,
 		MdDatepickerModule,
-		MdNativeDateModule
+		MdNativeDateModule,
+		MdSlideToggleModule
 	],
 })
 export class MaterialModule {
