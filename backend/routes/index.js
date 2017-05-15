@@ -16,6 +16,6 @@ app.get('/api/availability-report', require('./availability-report').get);
 app.post('/api/send-availability-report', require('./availability-report').post);
 
 app.get('/api/report-schedule', require('./report-schedule').get);
-app.post('/api/report-schedule', require('./report-schedule').post);
+app.put('/api/report-schedule', require('./report-schedule').put);
 
 app.use(require('middleware/handleUnauthorizedErrors'));

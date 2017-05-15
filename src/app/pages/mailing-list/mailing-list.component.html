@@ -10,12 +10,12 @@
   </md-input-container>
   <md-list-item *ngFor="let email of mailingList">
     <md-input-container class="mailing-list__edit-container" *ngIf="email.editing">
-      <input mdInput
+      <input mdInput ref-editedEmail
              pattern="[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$"
-             [(ngModel)]="email.editedValue" #editedEmail
-             (blur)="updateEditingEmail(email, email.editedValue, !editedEmail.validationMessage)"
-             (keyup.enter)="updateEditingEmail(email, email.editedValue, !editedEmail.validationMessage)"
-             (keyup.escape)="cancelEditingEmail(email)">
+             [value]="email.value"
+             (keyup.enter)="updateEditingEmail(email, editedEmail.value, !editedEmail.validationMessage)"
+             (keyup.escape)="cancelEditingEmail(email)"
+             (blur)="updateEditingEmail(email, editedEmail.value, !editedEmail.validationMessage && email.editing)">
     </md-input-container>
     <h4 md-line *ngIf="!email.editing" (click)="editEmail(email)">{{email.value}}</h4>
     <button md-icon-button *ngIf="!email.editing" (click)="editEmail(email)"><md-icon>edit</md-icon></button>

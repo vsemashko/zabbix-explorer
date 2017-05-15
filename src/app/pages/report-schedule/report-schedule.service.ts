@@ -24,7 +24,7 @@ export class ReportScheduleService {
 
 	updateReportSchedule(reportSchedule: ReportSchedule): Observable<any> {
 		const body = JSON.stringify(reportSchedule);
-		return this.authHttp.post(`${this.configService.baseUrl}/api/report-schedule`, body, {headers: contentHeaders})
+		return this.authHttp.put(`${this.configService.baseUrl}/api/report-schedule`, body, {headers: contentHeaders})
 			.map(response => response.json());
 	}
 

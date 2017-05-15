@@ -7,8 +7,7 @@ import { contentHeaders } from '../../core/headers';
 export class Email {
 	constructor(public value: string,
 	            public id?: string,
-	            public editing: boolean = false,
-	            public editedValue?: string) {}
+	            public editing: boolean = false) {}
 }
 
 @Injectable()

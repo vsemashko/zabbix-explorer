@@ -22,8 +22,10 @@ export class ReportScheduleComponent implements OnInit {
 	}
 
 	updateReportInterval(schedule: ReportSchedule, newInterval: number) {
-		schedule.interval = newInterval;
-		this.updateReportSchedule(schedule);
+		if (+schedule.interval !== +newInterval) {
+			schedule.interval = newInterval;
+			this.updateReportSchedule(schedule);
+		}
 	}
 
 	toggleReportActive(schedule: ReportSchedule) {

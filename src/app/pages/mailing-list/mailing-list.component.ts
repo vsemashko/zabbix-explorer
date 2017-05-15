@@ -40,7 +40,7 @@ export class MailingListComponent implements OnInit {
 	}
 
 	updateEditingEmail(email: Email, newEmailValue: string, isValid: boolean) {
-		if (isValid && email.value === newEmailValue || !this.hasEmail(newEmailValue)) {
+		if (isValid && (email.value === newEmailValue || !this.hasEmail(newEmailValue))) {
 			if (email.value !== newEmailValue) {
 				email.value = newEmailValue;
 				this.mailingListService.updateEmail(email)
@@ -60,7 +60,6 @@ export class MailingListComponent implements OnInit {
 
 	editEmail(email: Email): void {
 		email.editing = true;
-		email.editedValue = email.value;
 	}
 
 	completeEditingEmail(email: Email): void {
