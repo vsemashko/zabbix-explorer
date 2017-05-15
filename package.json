@@ -5,6 +5,7 @@
   "scripts": {
     "postinstall": "cd ./backend && npm i",
     "server": "cd backend && npm i && set NODE_PATH=./; && node server.js",
+    "init-db": "cd backend && npm i && set NODE_PATH=./; && node createDb.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
